@@ -2,7 +2,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/cl-helper/',
+  base: '/desmos-cl-helper/',
   test: {
     passWithNoTests: true,
   },
