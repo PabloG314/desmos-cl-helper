@@ -57,6 +57,15 @@ export function renderStartScreen(
 
     wrap.appendChild(heading('h1', 'Desmos CL Helper'));
 
+    const intro = el('p', 'start-screen__tutorial');
+    intro.append('New here? ');
+    const tutorialLink = document.createElement('a');
+    tutorialLink.href = `${import.meta.env.BASE_URL}tutorial.html`;
+    tutorialLink.textContent = 'Follow the tutorial';
+    intro.appendChild(tutorialLink);
+    intro.append(' to build a small practice activity and see how the helper works.');
+    wrap.appendChild(intro);
+
     if (noStorage) {
       const banner = el('p', 'banner banner--warn');
       banner.textContent =

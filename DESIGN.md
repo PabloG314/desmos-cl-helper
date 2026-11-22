@@ -634,3 +634,13 @@ Tracked in the project's "for later" doc:
 - A direct "Save to Google Drive" button.
 - Sharing the tool with other teachers (onboarding, polish).
 - A browser extension that works inside the Activity Builder editor (requires written permission from Amplify first).
+
+## 18. Tutorial page
+
+Decided Nov 2026.
+
+- A separate static page, `tutorial.html`, built by Vite alongside `index.html` (both listed in `build.rollupOptions.input`). It has its own URL so it can be linked, bookmarked, and printed. No JavaScript; styles in `src/tutorial.css`.
+- Linked from the start screen ("New here? Follow the tutorial").
+- Audience: teachers who know Activity Builder but have never used CL.
+- The walkthrough uses the section 11 test activity, so every step relies only on TESTED templates. Two differences from section 11: the hint note keeps its auto name (`s1_note2` instead of `s1_hint`), and the "specific value 7" rule is left out because the behaviour panel can't yet edit a rule's value.
+- When the UI labels or behaviour flows change, update the tutorial in the same change.

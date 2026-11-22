@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial: Your First Activity with Desmos CL Helper</title>
+    <link rel="stylesheet" href="/src/tutorial.css" />
+  </head>
+  <body>
+    <main class="tut">
+      <p class="tut__back"><a href="./">← Back to CL Helper</a></p>
+
+      <h1>Tutorial: your first activity with CL Helper</h1>
+
+      <p class="tut__lede">
+        In this tutorial you'll build a small four-screen practice activity in Desmos Activity Builder,
+        describe it to CL Helper, and paste the code it writes back into Desmos. By the end you'll have
+        answer feedback, a hint that appears after the first try, a self-checking table, and a graph that
+        plots a student's own equation. Plan on about 20 minutes.
+      </p>
+
+      <p>
+        You don't need to know any Computation Layer (CL) to follow along. CL Helper writes all of the
+        code. Your job is to build the screens in Desmos, give each component a name, and paste code where
+        the helper tells you to. CL Helper never connects to Desmos or changes anything there. It only gives
+        you text to copy.
+      </p>
+
+      <nav class="tut__toc" aria-label="Contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#overview">What you'll build</a></li>
+          <li><a href="#desmos">Part 1: Build the skeleton in Desmos</a></li>
+          <li><a href="#map">Part 2: Map the activity in CL Helper</a></li>
+          <li><a href="#behaviours">Part 3: Add behaviours</a></li>
+          <li><a href="#paste">Part 4: Copy the code into Desmos</a></li>
+          <li><a href="#test">Part 5: Test it as a student</a></li>
+          <li><a href="#later">Making changes later</a></li>
+          <li><a href="#trouble">If something doesn't work</a></li>
+        </ol>
+      </nav>
+
+      <section id="overview">
+        <h2>What you'll build</h2>
+        <p>
+          The activity has four screens. Each one shows off a different thing CL Helper can do. The
+          <strong>name</strong> column matters most: CL finds components by name, so the names in Desmos have
+          to match the names in CL Helper exactly.
+        </p>
+
+        <div class="tut__table-wrap">
+          <table class="tut__table">
+            <thead>
+              <tr><th>Screen</th><th>Component</th><th>Name</th><th>What it will do</th></tr>
+            </thead>
+            <tbody>
+              <tr><td rowspan="3">1</td><td>Math input</td><td><code>s1_math1</code></td><td>Student answers 3 × 4</td></tr>
+              <tr><td>Note</td><td><code>s1_note1</code></td><td>Shows feedback after the student submits</td></tr>
+              <tr><td>Note</td><td><code>s1_note2</code></td><td>A hint that appears after the first submit and stays</td></tr>
+              <tr><td>2</td><td>Table</td><td><code>s2_table1</code></td><td>Checks each y value for y = 2x + 1 with ✅ or ❌</td></tr>
+              <tr><td rowspan="2">3</td><td>Math input</td><td><code>s3_math1</code></td><td>Student writes an equation</td></tr>
+              <tr><td>Math input</td><td><code>s3_math2</code></td><td>Student enters a slope</td></tr>
+              <tr><td>4</td><td>Graph</td><td><code>s4_graph1</code></td><td>Plots the equation and the slope from Screen 3</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="tut__aside">
+          These are the names CL Helper creates on its own. The pattern is screen number, then component
+          type, then a counter, so <code>s3_math2</code> is the second math input on Screen 3. Using the
+          same names in Desmos saves you from renaming anything.
+        </p>
+      </section>
+
+      <section id="desmos">
+        <h2>Part 1: Build the skeleton in Desmos</h2>
+        <p>
+          Create a new, blank activity in Desmos Activity Builder and add four screens. Then set up each
+          screen as described below. For every component, find its name field in the editor and type the
+          name from the table above. Names are case-sensitive, so <code>s1_math1</code> and
+          <code>S1_Math1</code> are different.
+        </p>
+
+        <h3>Screen 1: answer feedback and a hint</h3>
+        <ol>
+          <li>Add a <strong>math input</strong>. Set its prompt to <em>What is 3 × 4?</em> Name it <code>s1_math1</code>.</li>
+          <li>In the math input's settings, <strong>turn on the submit button</strong>. The feedback and the hint both wait for the student to press it.</li>
+          <li>Add a <strong>note</strong> and name it <code>s1_note1</code>. You can leave it empty. CL will fill it with feedback.</li>
+          <li>Add a second <strong>note</strong> with the text <em>Hint: 3 × 4 means three groups of four.</em> Name it <code>s1_note2</code>.</li>
+        </ol>
+
+        <h3>Screen 2: a self-checking table</h3>
+        <ol>
+          <li>Add a <strong>table</strong> with 2 columns and 3 rows (not counting the header row). Name it <code>s2_table1</code>.</li>
+          <li>Label the column headers <em>x</em> and <em>y</em>.</li>
+          <li>Type 1, 2, and 3 down the x column. Leave every y cell blank for students.</li>
+          <li>Add a prompt such as <em>Fill in the table for y = 2x + 1.</em></li>
+        </ol>
+
+        <h3>Screen 3: student inputs to carry forward</h3>
+        <ol>
+          <li>Add a <strong>math input</strong> with the prompt <em>Write the equation of a line.</em> Name it <code>s3_math1</code>.</li>
+          <li>Add a second <strong>math input</strong> with the prompt <em>Choose a slope.</em> Name it <code>s3_math2</code>.</li>
+          <li>Turn on the submit button for both.</li>
+        </ol>
+
+        <h3>Screen 4: a graph that uses the student's answers</h3>
+        <ol>
+          <li>Add a <strong>graph</strong> and name it <code>s4_graph1</code>.</li>
+          <li>Inside the graph, add two expressions: <code>y = f(x)</code> and <code>y = a x</code>.</li>
+          <li>
+            Desmos will offer to make a slider for <code>a</code>, and it may flag <code>f</code> as
+            undefined. Don't add the slider and don't define <code>f</code>. CL will supply both values from
+            Screen 3. The warning on <code>f</code> is expected until the code is in place.
+          </li>
+        </ol>
+      </section>
+
+      <section id="map">
+        <h2>Part 2: Map the activity in CL Helper</h2>
+        <p>Now tell CL Helper what's in the activity. This is called the map.</p>
+        <ol>
+          <li>Open <a href="./">CL Helper</a> and click <strong>New activity</strong>. Give it a title, such as <em>CL Helper Tutorial</em>.</li>
+          <li>Set <strong>Screens</strong> to 4.</li>
+          <li>
+            On each screen card, use the <strong>+</strong> buttons to add components:
+            <ul>
+              <li>Screen 1: one <strong>Math input</strong> and two <strong>Notes</strong></li>
+              <li>Screen 2: one <strong>Table</strong></li>
+              <li>Screen 3: two <strong>Math inputs</strong></li>
+              <li>Screen 4: one <strong>Graph</strong></li>
+            </ul>
+          </li>
+          <li>
+            When you add the table, CL Helper asks three questions. Answer <strong>3</strong> rows,
+            <strong>2</strong> columns, and <strong>2</strong> for the column students fill in.
+          </li>
+          <li>Check that the names next to each counter match the table in <a href="#overview">What you'll build</a>, then click <strong>Map view →</strong>.</li>
+        </ol>
+        <p class="tut__aside">
+          The order you press the buttons in doesn't matter. Names are numbered by type on each screen, so
+          the first note on Screen 1 is always <code>s1_note1</code>.
+        </p>
+      </section>
+
+      <section id="behaviours">
+        <h2>Part 3: Add behaviours</h2>
+        <p>
+          The map view shows each screen as a card. Click a component's name to open its panel on the side.
+          The panel lists what that component can do. After you save a behaviour, the panel goes back to
+          that list, where you'll see the new behaviour with <strong>Edit</strong> and <strong>Remove</strong>
+          buttons and a <strong>Generated code</strong> section showing the code it produced. Components that
+          have a behaviour are marked with ⟷ on the map.
+        </p>
+        <p class="tut__aside">
+          You may also see an <strong>Ideas</strong> panel suggesting links such as plotting a math input on
+          a later graph. Those are suggestions only. For this tutorial, follow the steps below.
+        </p>
+
+        <h3>1. Feedback on the Screen 1 answer</h3>
+        <ol>
+          <li>Click <code>s1_math1</code> and choose <strong>Add input feedback</strong>.</li>
+          <li>Set <strong>Target note</strong> to <code>s1_note1</code>. This is where the feedback will appear.</li>
+          <li>Set <strong>Correct answer</strong> to 12. Leave <strong>Tolerance</strong> at 0.001.</li>
+          <li>For <strong>Correct message</strong>, type <em>Nice, 3 × 4 = 12.</em> For <strong>Fallback message</strong>, type <em>Not quite. Try again.</em></li>
+          <li>Leave <strong>Set dashboard correct</strong> checked. This gives the student a green check on your teacher dashboard when they get it right.</li>
+          <li>
+            Under <strong>Rules</strong>, pick <strong>Sign error</strong> and click <strong>+ Add rule</strong>.
+            Give it the message <em>Check your sign. Can two positive numbers multiply to a negative?</em>
+          </li>
+          <li>
+            Add a <strong>Place value</strong> rule the same way, with the message
+            <em>Close! Check your place value.</em> This rule catches answers like 1.2 and 120.
+          </li>
+          <li>Click <strong>Save</strong>.</li>
+        </ol>
+        <p class="tut__aside">
+          Rules are checked in order, after the correct answer and before the fallback. The first one that
+          matches decides the message.
+        </p>
+
+        <h3>2. A hint that appears after the first try</h3>
+        <ol>
+          <li>Click <code>s1_note2</code> and choose <strong>Show/hide on submit</strong>.</li>
+          <li>Set <strong>Reveal when this input is submitted</strong> to <code>s1_math1</code>, then click <strong>Save</strong>.</li>
+        </ol>
+        <p>
+          The hint stays hidden until the student presses submit the first time. After that it stays
+          visible, even if they change their answer.
+        </p>
+
+        <h3>3. Check the table cell by cell</h3>
+        <ol>
+          <li>Click <code>s2_table1</code> and choose <strong>Add table feedback</strong>.</li>
+          <li>Leave the suffixes as ✅ and ❌.</li>
+          <li>Under <strong>Correct values per cell</strong>, enter <strong>3</strong> for row 1, <strong>5</strong> for row 2, and <strong>7</strong> for row 3. These are the y values for x = 1, 2, and 3.</li>
+          <li>Click <strong>Save</strong>.</li>
+        </ol>
+        <p>
+          The check mark or X appears next to each answer once the student clicks out of the cell, so
+          they aren't graded halfway through typing.
+        </p>
+
+        <h3>4. Plot the student's equation</h3>
+        <ol>
+          <li>Click <code>s3_math1</code> and choose <strong>Carry value to a graph</strong>.</li>
+          <li>Set <strong>Destination</strong> to <code>s4_graph1</code>.</li>
+          <li>Set <strong>Carry type</strong> to <strong>Expression → graph function</strong>.</li>
+          <li>Type <strong>f</strong> for the function name and click <strong>Save</strong>.</li>
+        </ol>
+
+        <h3>5. Use the student's slope</h3>
+        <ol>
+          <li>Click <code>s3_math2</code> and choose <strong>Carry value to a graph</strong>.</li>
+          <li>Set <strong>Destination</strong> to <code>s4_graph1</code>.</li>
+          <li>Set <strong>Carry type</strong> to <strong>Number → graph variable</strong>.</li>
+          <li>Type <strong>a</strong> for the variable name and click <strong>Save</strong>.</li>
+        </ol>
+        <p>
+          The names <code>f</code> and <code>a</code> match the expressions you typed into the graph in Part 1.
+          That's how the graph knows where the student's answers go.
+        </p>
+      </section>
+
+      <section id="paste">
+        <h2>Part 4: Copy the code into Desmos</h2>
+        <p>
+          Click <strong>Generate code →</strong> at the top of the map view. The code page lists one script
+          for each component that needs code, grouped by screen. You should see five: <code>s1_math1</code>,
+          <code>s1_note1</code>, <code>s1_note2</code>, <code>s2_table1</code>, and <code>s4_graph1</code>.
+          The Screen 3 inputs don't need code of their own. The graph reads from them.
+        </p>
+        <p>For each script:</p>
+        <ol>
+          <li>Read the location line, for example <em>Screen 1 → s1_math1 → CL</em>. That's the component the code belongs to.</li>
+          <li>Read any setup reminders listed above the code, such as turning on a submit button. You did these in Part 1, so they're a double check.</li>
+          <li>Click <strong>Copy</strong>.</li>
+          <li>In Desmos, open that component's Computation Layer editor, paste the code, and close the editor.</li>
+        </ol>
+        <p>
+          Each script has a status badge. <strong>New</strong> means you haven't copied it yet.
+          <strong>Up to date</strong> means you copied the current version. <strong>Needs re-copying</strong>
+          means you changed something in CL Helper after copying, so the version in Desmos is out of date.
+        </p>
+
+        <h3>What the code looks like</h3>
+        <p>
+          You never have to edit the code, but it helps to recognize it. The graph's script, for example,
+          looks like this:
+        </p>
+        <pre class="tut__code"><code># &gt;&gt;&gt; cl-helper carry 3f2a9c
+function("f"): simpleFunction(s3_math1.latex, "x")
+# &lt;&lt;&lt; cl-helper carry 3f2a9c
+
+# &gt;&gt;&gt; cl-helper carry 8b41d0
+number("a"): s3_math2.numericValue
+# &lt;&lt;&lt; cl-helper carry 8b41d0</code></pre>
+        <p>
+          The lines starting with <code>#</code> are comments that mark which part of the script came from
+          which behaviour. The letters and numbers after them will be different in your copy. The hint's
+          script is a single line, <code>hidden: s1_math1.submitCount &lt; 1</code>, which reads as "stay
+          hidden until <code>s1_math1</code> has been submitted at least once."
+        </p>
+      </section>
+
+      <section id="test">
+        <h2>Part 5: Test it as a student</h2>
+        <p>Open the activity in student preview and try each of these. Each line says what you should see.</p>
+        <ul class="tut__checklist">
+          <li><strong>Screen 1:</strong> before you submit, both notes are hidden.</li>
+          <li><strong>Screen 1:</strong> submit <code>-12</code>. The sign error message appears and the hint shows up.</li>
+          <li><strong>Screen 1:</strong> submit <code>120</code>. You get the place value message.</li>
+          <li><strong>Screen 1:</strong> submit <code>7</code>. You get the fallback message.</li>
+          <li><strong>Screen 1:</strong> submit <code>12</code>. You get the correct message. The hint is still showing.</li>
+          <li><strong>Screen 2:</strong> type <code>3</code> in the first y cell and click away. A ✅ appears. Type a wrong value in another cell and you get a ❌.</li>
+          <li><strong>Screen 3:</strong> enter <code>y = 3x - 2</code> and a slope of <code>-1</code>.</li>
+          <li><strong>Screen 4:</strong> the graph shows your line from Screen 3 and the line y = -x.</li>
+        </ul>
+        <p>
+          If all of that works, you've used every main feature of CL Helper. To add CL to a real activity,
+          build or open it in Desmos, map it in CL Helper the same way, and attach the behaviours you need.
+        </p>
+      </section>
+
+      <section id="later">
+        <h2>Making changes later</h2>
+        <ul>
+          <li><strong>Changing a behaviour:</strong> click the component on the map and choose <strong>Edit</strong>. The script's badge changes to <em>Needs re-copying</em>. Copy it and paste it over the old code in Desmos.</li>
+          <li><strong>Renaming a component:</strong> double-click its name on the map. CL Helper adds a <em>To do in Desmos</em> reminder, because you also have to change the name in Desmos and re-copy any scripts that mention it.</li>
+          <li><strong>Moving components or screens:</strong> drag them on the map. If an automatic name has to change (for example a math input moving from Screen 2 to Screen 5), CL Helper will tell you before anything changes.</li>
+          <li><strong>Saving:</strong> your work saves in this browser on its own. To move it to another computer, use <strong>Export file</strong> or <strong>Copy share link</strong> on the code page.</li>
+        </ul>
+      </section>
+
+      <section id="trouble">
+        <h2>If something doesn't work</h2>
+        <dl class="tut__faq">
+          <dt>The CL editor shows an error mentioning a name.</dt>
+          <dd>The component name in Desmos doesn't match CL Helper. Check spelling and capitalization in both places.</dd>
+
+          <dt>The feedback note never appears.</dt>
+          <dd>Make sure the submit button is turned on for <code>s1_math1</code>, and that you pressed it in student preview.</dd>
+
+          <dt>The graph doesn't show the student's line.</dt>
+          <dd>Check that the graph has the expression <code>y = f(x)</code>, that <code>f</code> isn't defined anywhere else in the graph, and that the code went into the graph's CL rather than a math input's.</dd>
+
+          <dt>The second line ignores the slope.</dt>
+          <dd>If Desmos added a slider for <code>a</code>, delete it. The slider overrides the value from CL.</dd>
+
+          <dt>A table cell never gets a ✅ or ❌.</dt>
+          <dd>Click out of the cell. Feedback waits until the cell loses focus.</dd>
+        </dl>
+      </section>
+
+      <p class="tut__back"><a href="./">← Back to CL Helper</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+/* Tutorial page. Static, no JavaScript. Shares the app's base colours and fonts. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f5f5f5;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+.tut {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.tut h1 { font-size: 1.8rem; line-height: 1.25; margin: 0.5rem 0 1rem; }
+.tut h2 { font-size: 1.35rem; margin: 2.5rem 0 0.75rem; padding-top: 0.5rem; border-top: 1px solid #e5e5e5; }
+.tut h3 { font-size: 1.05rem; margin: 1.75rem 0 0.5rem; }
+
+.tut a { color: #1a6bbf; }
+
+.tut__lede { font-size: 1.1rem; }
+
+.tut__back { margin: 0; font-size: 0.9rem; }
+
+.tut ol, .tut ul { padding-left: 1.5rem; }
+.tut li { margin-bottom: 0.35rem; }
+
+.tut code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: #f0f3f7;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+.tut__toc {
+  background: #f7f9fc;
+  border: 1px solid #dde4ee;
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+}
+.tut__toc h2 { border: 0; margin: 0 0 0.25rem; padding: 0; font-size: 1rem; }
+.tut__toc ol { margin: 0; }
+
+.tut__aside {
+  border-left: 3px solid #1a6bbf;
+  background: #f4f8fd;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.95rem;
+}
+
+.tut__table-wrap { overflow-x: auto; }
+
+.tut__table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95rem;
+}
+.tut__table th, .tut__table td {
+  border: 1px solid #ddd;
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+.tut__table th { background: #f7f9fc; }
+
+.tut__code {
+  background: #1e1e1e;
+  color: #e6e6e6;
+  padding: 0.9rem 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.tut__code code { background: none; padding: 0; color: inherit; }
+
+.tut__checklist { list-style: none; padding-left: 0; }
+.tut__checklist li { padding-left: 1.6rem; position: relative; }
+.tut__checklist li::before { content: "☐"; position: absolute; left: 0; color: #666; }
+
+.tut__faq dt { font-weight: 600; margin-top: 1rem; }
+.tut__faq dd { margin: 0.25rem 0 0 0; }
+
+@media print {
+  body { background: #fff; }
+  .tut { max-width: none; padding: 0; }
+  .tut__back, .tut__toc { display: none; }
+  .tut__code { background: #f5f5f5; color: #000; border: 1px solid #ccc; }
+  .tut h2, .tut h3 { break-after: avoid; }
+}

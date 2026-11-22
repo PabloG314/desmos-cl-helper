@@ -27,6 +27,12 @@ button:hover { background: #f0f0f0; }
 
 .start-screen h1 { margin: 0 0 1.5rem; font-size: 1.6rem; }
 
+.start-screen__tutorial {
+  margin: -0.75rem 0 1.5rem;
+  color: #444;
+}
+.start-screen__tutorial a { color: #1a6bbf; }
+
 .start-screen__actions {
   display: flex;
   gap: 0.5rem;
