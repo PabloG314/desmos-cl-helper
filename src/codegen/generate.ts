@@ -40,7 +40,7 @@ export function generateAllScripts(activity: Activity): GenerateResult {
       if (conflicting) {
         conflicts.set(
           componentId,
-          `Sink "${key}" is set by more than one behaviour. ` +
+          `Sink "${key}" is set by more than one behavior. ` +
             `Use a separate note or resolve the conflict before generating code.`,
         );
         return;

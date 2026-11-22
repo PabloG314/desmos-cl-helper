@@ -142,7 +142,7 @@ export function showDeleteConfirm(
   const content = document.createElement('div');
   let html = `<h3 class="dialog__title">Delete ${compName}?</h3>`;
   if (affected.length > 0) {
-    html += `<p>This will also remove ${affected.length} behaviour${affected.length > 1 ? 's' : ''}:</p><ul>`;
+    html += `<p>This will also remove ${affected.length} behavior${affected.length > 1 ? 's' : ''}:</p><ul>`;
     for (const b of affected) {
       const desc =
         b.kind === 'feedback' && b.mode === 'input' ? `Feedback on ${names.get(b.source) ?? b.source}`

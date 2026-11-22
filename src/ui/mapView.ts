@@ -211,7 +211,7 @@ export function renderMapView(
     const nameSpan = document.createElement('span');
     nameSpan.className = 'map-comp-name';
     nameSpan.textContent = displayName;
-    nameSpan.title = 'Click to open behaviour panel (double-click to rename)';
+    nameSpan.title = 'Click to open behavior panel (double-click to rename)';
     nameSpan.tabIndex = 0;
 
     const errorSpan = el('span', 'map-comp-name-error');
@@ -253,7 +253,7 @@ export function renderMapView(
     if (isLinked) {
       const badge = el('span', 'badge badge--linked');
       badge.textContent = '⟷';
-      badge.title = 'Has a behaviour';
+      badge.title = 'Has a behavior';
       li.appendChild(badge);
     }
 

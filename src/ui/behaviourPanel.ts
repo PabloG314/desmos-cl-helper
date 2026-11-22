@@ -63,7 +63,7 @@ export function renderBehaviourPanel(
     const related = current.behaviours.filter(b => behaviourInvolvesComponent(b, componentId));
     if (related.length > 0) {
       const section = el('div', 'bp__section');
-      const h = el('h4', 'bp__section-title'); h.textContent = 'Behaviours'; section.appendChild(h);
+      const h = el('h4', 'bp__section-title'); h.textContent = 'Behaviors'; section.appendChild(h);
       for (const b of related) {
         const card = el('div', 'bp__behaviour-card');
         const desc = el('div', 'bp__behaviour-desc');
@@ -75,7 +75,7 @@ export function renderBehaviourPanel(
           render();
         });
         const delBtn = button('Remove', () => {
-          if (confirm(`Remove this behaviour?`)) update(removeBehaviour(current, b.id));
+          if (confirm(`Remove this behavior?`)) update(removeBehaviour(current, b.id));
         });
         delBtn.style.cssText = 'color:#c00;border-color:#fcc;';
         actions.appendChild(editBtn);
@@ -88,10 +88,10 @@ export function renderBehaviourPanel(
 
     // Available actions based on component type
     const addSection = el('div', 'bp__section');
-    const h2 = el('h4', 'bp__section-title'); h2.textContent = 'Add behaviour'; addSection.appendChild(h2);
+    const h2 = el('h4', 'bp__section-title'); h2.textContent = 'Add behavior'; addSection.appendChild(h2);
     const addBtns = availableActions(comp);
     if (addBtns.length === 0) {
-      const p = el('p', 'bp__empty'); p.textContent = 'No behaviours available for this component type in v1.';
+      const p = el('p', 'bp__empty'); p.textContent = 'No behaviors available for this component type in v1.';
       addSection.appendChild(p);
     }
     for (const { label, kind } of addBtns) {

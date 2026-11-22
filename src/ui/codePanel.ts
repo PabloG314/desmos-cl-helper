@@ -65,13 +65,13 @@ export function renderCodePanel(
     // Conflict warnings
     if (result.conflicts.size > 0) {
       const conflictWarn = el('div', 'code-panel__conflict-banner');
-      conflictWarn.innerHTML = `<strong>⚠ ${result.conflicts.size} conflict${result.conflicts.size > 1 ? 's' : ''}</strong> — some scripts could not be generated. Open those components in the behaviour panel to fix.`;
+      conflictWarn.innerHTML = `<strong>⚠ ${result.conflicts.size} conflict${result.conflicts.size > 1 ? 's' : ''}</strong> — some scripts could not be generated. Open those components in the behavior panel to fix.`;
       wrap.appendChild(conflictWarn);
     }
 
     if (result.scripts.length === 0) {
       const empty = el('p', 'code-panel__empty');
-      empty.textContent = 'No behaviours configured yet. Go back to the map and click a component to add behaviours.';
+      empty.textContent = 'No behaviors configured yet. Go back to the map and click a component to add behaviors.';
       wrap.appendChild(empty);
     }
 
