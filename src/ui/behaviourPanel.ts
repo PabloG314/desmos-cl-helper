@@ -230,8 +230,9 @@ export function renderBehaviourPanel(
         correctMessage: cm, rules: [...rules],
         fallbackMessage: fb, setDashboardCorrect: dc,
       };
-      update(existing ? updateBehaviour(current, behaviour) : addBehaviour(current, behaviour));
+      // Switch back to the list before update(), which re-renders the panel.
       mode = { kind: 'list' };
+      update(existing ? updateBehaviour(current, behaviour) : addBehaviour(current, behaviour));
     });
     saveBtn.className = 'btn-primary';
     form.appendChild(saveBtn);
@@ -320,8 +321,9 @@ export function renderBehaviourPanel(
         rules: [],
         fallbackSuffix: (fallbackSuffixInput as HTMLInputElement).value || '❌',
       };
-      update(existing ? updateBehaviour(current, behaviour) : addBehaviour(current, behaviour));
+      // Switch back to the list before update(), which re-renders the panel.
       mode = { kind: 'list' };
+      update(existing ? updateBehaviour(current, behaviour) : addBehaviour(current, behaviour));
     });
     saveBtn.className = 'btn-primary';
     form.appendChild(saveBtn);
@@ -378,8 +380,9 @@ export function renderBehaviourPanel(
         mapping,
         fallback: { enabled: false, message: '' },
       };
-      update(existing ? updateBehaviour(current, behaviour) : addBehaviour(current, behaviour));
+      // Switch back to the list before update(), which re-renders the panel.
       mode = { kind: 'list' };
+      update(existing ? updateBehaviour(current, behaviour) : addBehaviour(current, behaviour));
     });
     saveBtn.className = 'btn-primary';
     form.appendChild(saveBtn);
@@ -411,8 +414,9 @@ export function renderBehaviourPanel(
         target: comp.id,
         trigger: { type: 'submitted', input: inputId },
       };
-      update(existing ? updateBehaviour(current, behaviour) : addBehaviour(current, behaviour));
+      // Switch back to the list before update(), which re-renders the panel.
       mode = { kind: 'list' };
+      update(existing ? updateBehaviour(current, behaviour) : addBehaviour(current, behaviour));
     });
     saveBtn.className = 'btn-primary';
     form.appendChild(saveBtn);
