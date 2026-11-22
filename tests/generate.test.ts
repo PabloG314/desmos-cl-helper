@@ -15,6 +15,7 @@ import { generateShowHide } from '../src/codegen/showHide';
 import { generateTableFeedback } from '../src/codegen/tableFeedback';
 import { generateCarryForward } from '../src/codegen/carryForward';
 import { intervalExpr } from '../src/codegen/intervals';
+import { generateAllScripts } from '../src/codegen/generate';
 
 // ── Test activity layout from DESIGN.md §11 ──────────────────────────────────
 // Screen 1: s1_math1 (math, submit on), s1_note1 (note), s1_hint (custom note)
@@ -367,5 +368,32 @@ describe('generateCarryForward', () => {
       fallback: { enabled: false, message: '' },
     };
     expect(() => generateCarryForward(behaviour, a)).toThrow(/UNTESTED/);
+  });
+});
+
+describe('setup reminders', () => {
+  it('never asks the teacher to turn on a submit button (it is on by default)', () => {
+    let a = buildTestActivity();
+    const math1Id = a.screens[0].components[0].id;
+    const note1Id = a.screens[0].components[1].id;
+    const hintId  = a.screens[0].components[2].id;
+    const feedback: InputFeedback = {
+      kind: 'feedback', mode: 'input', id: 'fb0001',
+      source: math1Id, target: note1Id,
+      correct: 12, tolerance: 0.001,
+      correctMessage: 'Yes', rules: [], fallbackMessage: 'No',
+      setDashboardCorrect: true,
+    };
+    const showHide: ShowHideBehaviour = {
+      kind: 'showHide', id: 'sh0001',
+      target: hintId, trigger: { type: 'submitted', input: math1Id },
+    };
+    a = { ...a, behaviours: [feedback, showHide] };
+
+    const result = generateAllScripts(a);
+    expect(result.scripts.length).toBe(3);
+    for (const script of result.scripts) {
+      expect(script.setupReminders.join(' ')).not.toMatch(/submit button/i);
+    }
   });
 });

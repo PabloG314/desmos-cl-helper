@@ -28,7 +28,7 @@ These facts drive the design.
 - **Each component has exactly one CL script.** All behaviours that affect a component must be merged into that one script.
 - CL scripts set **sinks** (properties of the component, such as `hidden:`, `content:`, `cellSuffix(r,c):`) and read **sources** (values from components, such as `.numericValue`, `.latex`, `.submitted`, `.submitCount`). **A sink can be set only once per script.** Two behaviours that both set the same sink on the same component conflict.
 - Graphs receive values from CL through sinks like `number("a"):` and `function("f"):`, which feed variables used in the graph's own expressions.
-- Math inputs only have a submit button if it is turned on in the Desmos editor (or via CL).
+- Math inputs show a submit button by default; there is no editor setting to turn it on, so the tool never asks the teacher to.
 - Tables have no submit button. Table rows in CL are numbered from 1 for the first data row; columns from 1.
 
 Verified in testing (Nov 2026):
@@ -286,7 +286,6 @@ interface InputFeedback {
 Generated code:
 - On the **input**: `correct:` sink (if enabled).
 - On the **note**: variables for each rule, `hidden: not(<input>.submitted)`, and a `content:` with a `when ... otherwise` chain.
-- Setup reminder: "Turn on the submit button for `<input>` in Desmos."
 
 #### 9.1.3 Table branch
 
@@ -377,7 +376,6 @@ interface ShowHideBehaviour {
 - **Once revealed, content stays visible**, even if the student edits their answer.
   - `submitted`: `hidden: <input>.submitCount < 1` (tested, stays visible).
   - `correct` / `ruleMatched`: CL recomputes live, so a plain check would re-hide on edit. Making it stick is Open Question O1. Do not ship a non-sticky version of these without the author's OK.
-- Setup reminder: "Turn on the submit button for `<input>` in Desmos."
 
 ---
 

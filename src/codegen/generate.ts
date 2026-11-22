@@ -58,7 +58,7 @@ export function generateAllScripts(activity: Activity): GenerateResult {
           addSection(result.inputSection.componentId, {
             sinkKeys: [result.inputSection.sinkKey],
             code: result.inputSection.code,
-            setupReminders: [`Turn on the submit button for \`${names.get(behaviour.source) ?? behaviour.source}\` in Desmos.`],
+            setupReminders: [],
           });
         }
         addSection(result.noteSection.componentId, {
@@ -100,11 +100,10 @@ export function generateAllScripts(activity: Activity): GenerateResult {
     if (behaviour.kind === 'showHide') {
       try {
         const section = generateShowHide(behaviour, activity);
-        const inputName = names.get(behaviour.trigger.input) ?? behaviour.trigger.input;
         addSection(section.componentId, {
           sinkKeys: [section.sinkKey],
           code: section.code,
-          setupReminders: [`Turn on the submit button for \`${inputName}\` in Desmos.`],
+          setupReminders: [],
         });
       } catch (e) {
         conflicts.set(behaviour.target, (e as Error).message);
