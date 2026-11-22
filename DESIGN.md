@@ -643,4 +643,5 @@ Decided Nov 2026.
 - Linked from the start screen ("New here? Follow the tutorial").
 - Audience: teachers who know Activity Builder but have never used CL.
 - The walkthrough uses the section 11 test activity, so every step relies only on TESTED templates. Two differences from section 11: the hint note keeps its auto name (`s1_note2` instead of `s1_hint`), and the "specific value 7" rule is left out because the behaviour panel can't yet edit a rule's value.
+- The tutorial is written in American English ("behavior", not "behaviour").
 - When the UI labels or behaviour flows change, update the tutorial in the same change.

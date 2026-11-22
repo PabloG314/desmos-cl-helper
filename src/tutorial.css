@@ -1,4 +1,4 @@
-/* Tutorial page. Static, no JavaScript. Shares the app's base colours and fonts. */
+/* Tutorial page. Static, no JavaScript. Shares the app's base colors and fonts. */
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -56,21 +56,6 @@ body {
   border-radius: 0 4px 4px 0;
   font-size: 0.95rem;
 }
-
-.tut__table-wrap { overflow-x: auto; }
-
-.tut__table {
-  border-collapse: collapse;
-  width: 100%;
-  font-size: 0.95rem;
-}
-.tut__table th, .tut__table td {
-  border: 1px solid #ddd;
-  padding: 0.4rem 0.6rem;
-  text-align: left;
-  vertical-align: top;
-}
-.tut__table th { background: #f7f9fc; }
 
 .tut__code {
   background: #1e1e1e;
