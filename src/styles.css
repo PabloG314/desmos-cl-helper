@@ -27,6 +27,13 @@ button:hover { background: #f0f0f0; }
 
 .start-screen h1 { margin: 0 0 1.5rem; font-size: 1.6rem; }
 
+.start-screen__home {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: #1a6bbf;
+}
+
 .start-screen__tutorial {
   margin: -0.75rem 0 1.5rem;
   color: #444;
