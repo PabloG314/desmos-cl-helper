@@ -17,7 +17,7 @@ export function fillTemplate(body: string, params: Record<string, string>): stri
 export const TEMPLATES: Record<string, Template> = {
   inputDashboardCorrect: {
     id: 'inputDashboardCorrect',
-    description: 'Mark a math input correct on the dashboard',
+    description: 'Mark a math response correct on the dashboard',
     sinkKeys: ['correct'],
     tested: true,
     body: 'correct: {{correctExpr}}',
@@ -25,7 +25,7 @@ export const TEMPLATES: Record<string, Template> = {
 
   inputFeedbackNote: {
     id: 'inputFeedbackNote',
-    description: 'Show feedback in a note after a math input is submitted',
+    description: 'Show feedback in a note after a math response is submitted',
     sinkKeys: ['hidden', 'content'],
     tested: true,
     body: [
@@ -60,7 +60,7 @@ export const TEMPLATES: Record<string, Template> = {
 
   carryMathToGraphFunction: {
     id: 'carryMathToGraphFunction',
-    description: 'Carry a math input expression into a graph as a function',
+    description: 'Carry a math response expression into a graph as a function',
     sinkKeys: [], // dynamic: function("name")
     tested: true,
     body: 'function("{{funcName}}"): simpleFunction({{sourceName}}.latex, "x")',
@@ -68,7 +68,7 @@ export const TEMPLATES: Record<string, Template> = {
 
   carryMathToGraphNumber: {
     id: 'carryMathToGraphNumber',
-    description: 'Carry a math input numeric value into a graph as a number variable',
+    description: 'Carry a math response numeric value into a graph as a number variable',
     sinkKeys: [], // dynamic: number("name")
     tested: true,
     body: 'number("{{varName}}"): {{sourceName}}.numericValue',

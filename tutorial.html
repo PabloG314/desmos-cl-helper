@@ -48,29 +48,33 @@
           up, so you can go straight to <a href="#map">Part 2</a>.
         </p>
         <p>
-          Create a new, blank activity in Desmos Activity Builder and add four screens. Give each component
-          the exact name shown, using its name field in the editor. Names are case-sensitive.
+          Create a new, blank activity in Desmos Activity Builder and add four screens. On each screen, add the
+          components in the order listed. Give each component the exact name shown, using its name field in the
+          editor. Names are case-sensitive. The prompt notes don't need special names.
         </p>
 
         <h3>Screen 1</h3>
         <ol>
-          <li>Add a <strong>math input</strong> with the prompt <em>What is 3 × 4?</em> Name it <code>s1_math1</code>.</li>
+          <li>Add a <strong>note</strong> with the prompt <em>What is 3 × 4?</em></li>
+          <li>Add a <strong>math response</strong> below it. Name it <code>s1_math1</code>.</li>
           <li>Add a <strong>note</strong>. Leave it empty and name it <code>s1_note1</code>.</li>
-          <li>Add a second <strong>note</strong> with the text <em>Hint: 3 × 4 means three groups of four.</em> Name it <code>s1_note2</code>.</li>
+          <li>Add another <strong>note</strong> with the text <em>Hint: 3 × 4 means three groups of four.</em> Name it <code>s1_note2</code>.</li>
         </ol>
 
         <h3>Screen 2</h3>
         <ol>
-          <li>Add a <strong>table</strong> with 2 columns and 3 rows, not counting the header row. Name it <code>s2_table1</code>.</li>
+          <li>Add a <strong>note</strong> with the prompt <em>Fill in the table for y = 2x + 1.</em></li>
+          <li>Add a <strong>table</strong> below it with 2 columns and 3 rows, not counting the header row. Name it <code>s2_table1</code>.</li>
           <li>Label the column headers <em>x</em> and <em>y</em>.</li>
           <li>Type 1, 2, and 3 down the x column. Leave the y cells blank.</li>
-          <li>Add the prompt <em>Fill in the table for y = 2x + 1.</em></li>
         </ol>
 
         <h3>Screen 3</h3>
         <ol>
-          <li>Add a <strong>math input</strong> with the prompt <em>Write the equation of a line.</em> Name it <code>s3_math1</code>.</li>
-          <li>Add a second <strong>math input</strong> with the prompt <em>Choose a slope.</em> Name it <code>s3_math2</code>.</li>
+          <li>Add a <strong>note</strong> with the prompt <em>Write the equation of a line.</em></li>
+          <li>Add a <strong>math response</strong> below it. Name it <code>s3_math1</code>.</li>
+          <li>Add a <strong>note</strong> with the prompt <em>Choose a slope.</em></li>
+          <li>Add a <strong>math response</strong> below it. Name it <code>s3_math2</code>.</li>
         </ol>
 
         <h3>Screen 4</h3>
@@ -90,9 +94,9 @@
           <li>
             On each screen card, use the <strong>+</strong> buttons to add components:
             <ul>
-              <li>Screen 1: one <strong>Math input</strong> and two <strong>Notes</strong></li>
+              <li>Screen 1: one <strong>Math response</strong> and two <strong>Notes</strong></li>
               <li>Screen 2: one <strong>Table</strong></li>
-              <li>Screen 3: two <strong>Math inputs</strong></li>
+              <li>Screen 3: two <strong>Math responses</strong></li>
               <li>Screen 4: one <strong>Graph</strong></li>
             </ul>
           </li>
@@ -103,8 +107,10 @@
           <li>Check that the names next to each counter match the names you used in Desmos, then click <strong>Map view →</strong>.</li>
         </ol>
         <p class="tut__aside">
-          The order you press the buttons in doesn't matter. Names are numbered by type on each screen, so
-          the first note on Screen 1 is always <code>s1_note1</code>.
+          Leave the prompt notes out of the map. CL Helper only needs the components that CL reads or changes,
+          and adding the prompt notes would throw off its automatic note names. The order you press the buttons
+          in doesn't matter. Names are numbered by type on each screen, so the first note you add to Screen 1 in CL
+          Helper is always <code>s1_note1</code>.
         </p>
       </section>
 
@@ -118,7 +124,7 @@
           have a behavior are marked with ⟷ on the map.
         </p>
         <p class="tut__aside">
-          You may also see an <strong>Ideas</strong> panel suggesting links such as plotting a math input on
+          You may also see an <strong>Ideas</strong> panel suggesting links such as plotting a math response on
           a later graph. Those are suggestions only. For this tutorial, follow the steps below.
         </p>
 
@@ -252,7 +258,7 @@ number("a"): s3_math2.numericValue
         <ul>
           <li><strong>Changing a behavior:</strong> click the component on the map and choose <strong>Edit</strong>. The script's badge changes to <em>Needs re-copying</em>. Copy it and paste it over the old code in Desmos.</li>
           <li><strong>Renaming a component:</strong> double-click its name on the map. CL Helper adds a <em>To do in Desmos</em> reminder, because you also have to change the name in Desmos and re-copy any scripts that mention it.</li>
-          <li><strong>Moving components or screens:</strong> drag them on the map. If an automatic name has to change (for example a math input moving from Screen 2 to Screen 5), CL Helper will tell you before anything changes.</li>
+          <li><strong>Moving components or screens:</strong> drag them on the map. If an automatic name has to change (for example a math response moving from Screen 2 to Screen 5), CL Helper will tell you before anything changes.</li>
           <li><strong>Saving:</strong> your work saves in this browser on its own. To move it to another computer, use <strong>Export file</strong> or <strong>Copy share link</strong> on the code page.</li>
         </ul>
       </section>
@@ -267,7 +273,7 @@ number("a"): s3_math2.numericValue
           <dd>The feedback waits for the student to press submit. Make sure you pressed it for <code>s1_math1</code> in student preview.</dd>
 
           <dt>The graph doesn't show the student's line.</dt>
-          <dd>Check that the graph has the expression <code>y = f(x)</code>, that <code>f</code> isn't defined anywhere else in the graph, and that the code went into the graph's CL rather than a math input's.</dd>
+          <dd>Check that the graph has the expression <code>y = f(x)</code>, that <code>f</code> isn't defined anywhere else in the graph, and that the code went into the graph's CL rather than a math response's.</dd>
 
           <dt>The second line ignores the slope.</dt>
           <dd>If Desmos added a slider for <code>a</code>, delete it. The slider overrides the value from CL.</dd>

@@ -144,7 +144,7 @@ export function renderBehaviourPanel(
     const names = getAllDisplayNames(current);
     const notes = current.screens.flatMap(s => s.components.filter(c => c.type === 'note'));
 
-    form.appendChild(formRow('Source (math input)', text(names.get(comp.id) ?? comp.id, true)));
+    form.appendChild(formRow('Source (math response)', text(names.get(comp.id) ?? comp.id, true)));
 
     // Target note selector
     const noteSelect = select(
@@ -331,7 +331,7 @@ export function renderBehaviourPanel(
 
   function renderCarryForwardForm(form: HTMLElement, comp: Component, existing: CarryForwardBehaviour | null): void {
     const names = getAllDisplayNames(current);
-    form.appendChild(formRow('Source (math input)', text(names.get(comp.id) ?? comp.id, true)));
+    form.appendChild(formRow('Source (math response)', text(names.get(comp.id) ?? comp.id, true)));
 
     // Find graphs on later screens
     const srcScreenIdx = current.screens.findIndex(s => s.components.some(c => c.id === componentId));
@@ -395,7 +395,7 @@ export function renderBehaviourPanel(
     // Find math inputs
     const mathInputs = current.screens.flatMap(s => s.components.filter(c => c.type === 'math'));
     if (mathInputs.length === 0) {
-      const warn = el('p', 'bp__warn'); warn.textContent = 'No math inputs found in this activity.';
+      const warn = el('p', 'bp__warn'); warn.textContent = 'No math responses found in this activity.';
       form.appendChild(warn); return;
     }
 
@@ -407,7 +407,7 @@ export function renderBehaviourPanel(
 
     const saveBtn = button('Save', () => {
       const inputId = triggerSelect.value;
-      if (!inputId) { alert('Please select a math input.'); return; }
+      if (!inputId) { alert('Please select a math response.'); return; }
       const behaviour: ShowHideBehaviour = {
         kind: 'showHide',
         id: existing?.id ?? crypto.randomUUID(),

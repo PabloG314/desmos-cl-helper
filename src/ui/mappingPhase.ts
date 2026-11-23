@@ -4,7 +4,7 @@ import { getAllDisplayNames } from '../model/naming';
 
 const COMPONENT_TYPES: { type: ComponentType; label: string }[] = [
   { type: 'note',   label: 'Note' },
-  { type: 'math',   label: 'Math input' },
+  { type: 'math',   label: 'Math response' },
   { type: 'text',   label: 'Text input' },
   { type: 'mc',     label: 'Multiple choice' },
   { type: 'check',  label: 'Checkboxes' },
