@@ -27,13 +27,6 @@ button:hover { background: #f0f0f0; }
 
 .start-screen h1 { margin: 0 0 1.5rem; font-size: 1.6rem; }
 
-.start-screen__home {
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  font-size: 0.9rem;
-  color: #1a6bbf;
-}
-
 .start-screen__tutorial {
   margin: -0.75rem 0 1.5rem;
   color: #444;
@@ -212,7 +205,7 @@ button:hover { background: #f0f0f0; }
 .mapping-phase__footer { margin-top: 0.5rem; }
 
 /* ── Map view ──────────────────────────────────── */
-.map-view { display: flex; flex-direction: column; height: 100vh; }
+.map-view { display: flex; flex-direction: column; height: calc(100vh - var(--site-bar-h)); }
 
 .map-view__topbar {
   display: flex;
@@ -474,7 +467,7 @@ button:hover { background: #f0f0f0; }
 }
 
 /* ── Code panel ─────────────────────────────────── */
-.code-panel { display: flex; flex-direction: column; min-height: 100vh; }
+.code-panel { display: flex; flex-direction: column; min-height: calc(100vh - var(--site-bar-h)); }
 
 .code-panel__topbar {
   display: flex;
@@ -618,3 +611,17 @@ button:hover { background: #f0f0f0; }
 .idea-card__desc { font-size: 0.85rem; margin: 0 0 0.4rem; }
 .idea-card__btns { display: flex; gap: 0.4rem; }
 .idea-card__dismiss { font-size: 0.8rem; }
+
+/* Site bar: link back to MathEdPotatoes.com on every page. */
+:root { --site-bar-h: 2rem; }
+.site-bar {
+  height: var(--site-bar-h);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 0.85rem;
+}
+.site-bar a { color: #1a6bbf; text-decoration: none; }
+.site-bar a:hover { text-decoration: underline; }

@@ -55,12 +55,6 @@ export function renderStartScreen(
     container.innerHTML = '';
     const wrap = el('div', 'start-screen');
 
-    const homeLink = document.createElement('a');
-    homeLink.className = 'start-screen__home';
-    homeLink.href = 'https://mathedpotatoes.com';
-    homeLink.textContent = '← Back to MathEdPotatoes.com';
-    wrap.appendChild(homeLink);
-
     wrap.appendChild(heading('h1', 'Desmos CL Helper'));
 
     const intro = el('p', 'start-screen__tutorial');
